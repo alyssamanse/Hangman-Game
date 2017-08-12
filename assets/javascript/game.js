@@ -17,6 +17,8 @@ var guessedLetters = [];
 // Randomly chooses a choice from the words array. This is the Computer's word.
 var computerWord = words[Math.floor(Math.random() * words.length)];
 
+computerWord = computerWord.toUpperCase();
+
 // Starting lives in Hangman
 var remainingLives = 9;
 
@@ -34,14 +36,12 @@ document.onkeyup = function(event) {
 	// Determines which key was pressed.
      var userGuess = event.key;
 
-     /*/ Creates an array from the blank word with the commas removed
-     var spaces = [blankWord.join(" ")];
-     */
+     userGuess = userGuess.toUpperCase();
 
      // WRITE SOMETHING TO CAPTURE DOUBLE LETTERS LIKE SS IN MISSANDEI, CURRENTLY ONLY REPLACING FIRST ONEi
      // REMOVE DUPLICATE LETTERS FROM GUESSEDLETTERS
+     // USE TOOL TO REMOVE COMMAS
 
-     console.log(computerWord);
 
      if (remainingLives >= 1) {
 
