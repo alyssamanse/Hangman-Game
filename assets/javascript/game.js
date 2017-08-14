@@ -72,8 +72,6 @@
 		// Stores the length of the hangmanWord
 		wordLength = hangmanWordLetters.length;
 
-		console.log(hangmanWord);
-
 		for (var i = 0; i < wordLength; i++) {
 			blankWord.push("_");
 		}
@@ -164,10 +162,6 @@
 
 		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
 		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
-		
-		console.log(hangmanWord);
-		console.log(guessedLetters);
-		console.log(remainingGuesses)
 
 	}
 
