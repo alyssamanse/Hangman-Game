@@ -1,3 +1,47 @@
-* {
+
+.content {
+	background-color: #1e1e1e;
+}
+
+.header {
 	font-family: 'Cardo', serif;
-};
+	color: #e2e2e2;
+	margin-bottom: -125px;
+}
+
+.title {
+	position: relative;
+	z-index: 2;
+	font-size: 80px;
+	line-height: .5;
+}
+
+.subtitle {
+	position: relative;
+	z-index: 2;
+}
+
+
+.banner {
+	margin: 0 auto;
+	top: -140px;
+	z-index: 1;
+	position: relative;
+}
+
+.answer {
+	color: #ffffff;
+	font-family: 'Cardo', serif;
+}
+
+.text {
+	font-family: 'Cardo', serif;
+}
+
+.footer {
+	background-color: #e2e2e2;
+	color: #1e1e1e;
+	font-family: 'Cardo', serif;
+	clear: both;
+	margin: 0 auto;
+}

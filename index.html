@@ -8,50 +8,64 @@
 </head>
 <body>
 
-<div class="jumbotron">
-  <h1>Hangman: Game of Thrones Edition</h1>
-  <p>Ask your local maester for a quick spelling lesson and click any key to begin!</p>
-</div>
+<div class="container content">
 
-<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center header">
+			<h1 class="title">H A N G M A N</h1>
+			<h3 class="subtitle">Ask your local maester for a quick spelling lesson and click any key to begin!</h3>
+			<img src="assets/images/banner.jpg" class="img-responsive banner">
+			<br>
+		</div>
+	</div>
+
 	<div class="row">
 
-		<div class="col-xs-12 col-md-6">
-			<div id="answerText"></div>
-			<div id="answerImage">
-				<img src="assets/images/ironthrone.jpg" width="300px" height="300px">
-			</div>
-			<div id="loserText"></div>
-			<div id="loserImage"></div>
+		<div class="col-xs-6 col-md-4">
+			<div id="answerImage" class="img-responsive text-center"></div>
+			<br>
+			<div id="answerText" class="text-center answer"></div>
 		</div>
-
-		<div class="col-xs-12 col-md-6">
-
-			<h2>Wins</h2>
-
-			<div id="wins">
-			</div>
-
-			<h1>Current Word</h1>
-
-			<div id="currentWord">
-			</div>
-
-			<h2>Number of Guesses Remaining</h2>
-
-			<div id="guessesRemaining">
-			</div>
-
-			<h2>Letters Already Guessed</h2>
-
-			<div id="lettersGuessed">
+		
+		<div class="col-xs-12 col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<h3 class="panel-title text">Current Word</h3>
+				</div>
+				<div class="panel-body text text-center" id="currentWord"></div>
 			</div>
 		</div>
 
+		<div class="col-xs-12 col-md-4">
+
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+				<h3 class="panel-title text">Wins</h3>
+				</div>
+				<div class="panel-body text text-center" id="wins"></div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+				<h3 class="panel-title text">Guesses Remaining</h3>
+				</div>
+				<div class="panel-body text text-center" id="guessesRemaining"></div>
+			</div>
+
+			<div class="panel panel-default text-center">
+				<div class="panel-heading">
+					<h3 class="panel-title text">Incorrect Guesses</h3>
+				</div>
+				<div class="panel-body text text-center" id="lettersGuessed"></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 footer text-center">
+				<h5>© Copyright Alyssa Manse 2017</h5>
+			</div>
+		</div>
 	</div>
-</div>
-
-
 </div>
 
 <script type="text/javascript" src="assets/javascript/game.js"></script>
