@@ -138,7 +138,7 @@
 		} else if (valid) {
 			guessedLetters.push(userGuess);
 			remainingGuesses--;
-			document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
+			document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
 		} 	
 
 		// Lose
@@ -163,10 +163,7 @@
 			} 
 		}
 
-		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
-		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
-
 	}
 
 		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
-		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
+		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
