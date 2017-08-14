@@ -14,19 +14,24 @@
 	z-index: 2;
 	font-size: 80px;
 	line-height: .5;
+	color: #ffffff;
+	padding-top: 10px;
+
 }
 
 .subtitle {
 	position: relative;
 	z-index: 2;
+	margin-top: 15px;
 }
 
 
 .banner {
 	margin: 0 auto;
-	top: -140px;
+	top: -165px;
 	z-index: 1;
 	position: relative;
+	opacity: .5;
 }
 
 .answer {

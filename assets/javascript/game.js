@@ -22,7 +22,7 @@
 	function start() {
 
 		// Shows generic image
-		document.getElementById("answerImage").innerHTML = "<img src=\"assets/images/ironthrone.jpg\" width=\"300px\" height=\"300px\">";
+		document.getElementById("answerImage").innerHTML = '<img src="assets/images/ironthrone.jpg" width="400px" height="400px">';
 
 		// Randomly chooses a word from the words array. This is the hangmanWord.
 		hangmanWord = words[Math.floor(Math.random() * words.length)];
@@ -53,7 +53,7 @@
 	function restart() {
 
 		// Shows generic image
-		document.getElementById("answerImage").innerHTML = '<img src="assets/images/ironthrone.jpg" width="300px" height="300px">';
+		document.getElementById("answerImage").innerHTML = '<img src="assets/images/ironthrone.jpg" width="400px" height="400px">';
 
 		// Resets blanks for word and letters already guessed
 		blankWord = [];
@@ -140,8 +140,9 @@
 			document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
 		} 	
 
+		// Lose
 		if (remainingGuesses < 1) {
-			document.getElementById("answerImage").innerHTML = '<img src="assets/images/hangman.gif" width="300px" height="300px">';
+			document.getElementById("answerImage").innerHTML = '<img src="assets/images/hangman.gif" width="400px" height="400px">';
 			document.getElementById("answerText").innerHTML = "<h1> You lose! Click anywhere to play again. </h1>";
 			document.onclick = function(event) {
 				document.getElementById("answerText").innerHTML = "";
@@ -149,10 +150,11 @@
 			}
 		}  
 
+		// Win  
 		if (blankWord.join("") === hangmanWord) {
 			wins++;
 			document.getElementById("wins").innerHTML = "<h2> " + wins + "</h2>";
-			document.getElementById("answerImage").innerHTML = '<img src="assets/images/win.gif" width="300px" height="300px">';
+			document.getElementById("answerImage").innerHTML = '<img src="assets/images/win.gif" width="400px" height="400px">';
 			document.getElementById("answerText").innerHTML = "<h1> You win! Click anywhere to try again. </h1>";
 			document.onclick = function(event) {
 				document.getElementById("answerText").innerHTML = "";
