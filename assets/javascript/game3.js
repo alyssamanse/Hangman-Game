@@ -56,8 +56,6 @@ for (var i = 0; i < computerWord.length; i++) {
     blankWord.push("_");
  };
 
- blankWord.split(" ");
-
 console.log(blankWord);
 
 currentWord.innerHTML = "<h1> " + blankWord + " </h1";  
@@ -76,7 +74,7 @@ document.onkeyup = function(event) {
 
 
      if (remainingLives >= 1) {
-
+ worl 
 	   	 if (wordLetters.indexOf(userGuess) > -1) {
 	     	var choiceIndex = wordLetters.indexOf(userGuess);
 	     	blankWord[choiceIndex] = userGuess;
