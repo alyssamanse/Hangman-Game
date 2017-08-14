@@ -1,6 +1,7 @@
 
 .content {
 	background-color: #262626;
+	overflow: hidden;
 }
 
 .header {
