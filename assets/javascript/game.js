@@ -95,7 +95,9 @@
 
 		// checks if the userGuess is a valid letter
 		function validate() {
-			
+
+			var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
 			for (i = 0; i < guessedLetters.length; i++) {
 
 				if (userGuess === guessedLetters[i] || userGuess === blankWord[i]) {
@@ -104,11 +106,10 @@
 				} 
 			}
 
-			if (userGuess.charCodeAt(0) <= 122 && userGuess.charCodeAt(0) >= 97) {
-				valid = true;
-			} else {
-				alert("Choose a letter or I'll ring your head like a bell");
-				return;
+			for (j = 0; j < alphabet.length; j++) {
+				if (userGuess === alphabet[j]) {
+					valid = true;
+				}
 			}
 		}
 
@@ -169,7 +170,3 @@
 
 		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
 		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
-	
-
-
-// SHOW WINNING IMAGE WHEN WORD IS COMPLETE -- DEPENDS ON ORDER SO WHATEVER IS LISTED FIRST WILL RUN
