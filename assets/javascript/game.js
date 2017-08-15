@@ -1,7 +1,7 @@
 
 
 	// Get Elements
-	var wins = document.getElementById("wins");
+	var score = document.getElementById("wins");
 	var currentWord = document.getElementById("currentWord");
 	var guessesRemaining = document.getElementById("guessesRemaining");
 	var lettersGuessed = document.getElementById("lettersGuessed");
@@ -12,7 +12,7 @@
 	var words = ["Tyrion", "Lannister", "Westeros", "Daenerys", "Khaleesi", "Valyrian", "Volantis", "Hodor", "Direwolf", "Baratheon", "Dothraki", "Wildling", "Brienne", "Nymeria", "Stark", "Catspaw", "Missandei", "Brotherhood", "Baelor", "Rhaegar", "Ghost", "Winterfell", "Oberyn", "Harrenhal"];
 	var wins = 0;
 	var guessedLetters = [];
-	var remainingGuesses = 9;
+	var lives;
 	var blankWord = [];
 	var hangmanWord;
 	var hangmanWordLetters = [];
@@ -22,7 +22,10 @@
 	function start() {
 
 		// Shows generic image
-		document.getElementById("answerImage").innerHTML = '<img src="assets/images/ironthrone.jpg" width="400px" height="400px">';
+		answerImage.innerHTML = '<img src="assets/images/ironthrone.jpg" width="400px" height="400px">';
+
+		// Sets lives to 9
+		lives = 9;
 
 		// Randomly chooses a word from the words array. This is the hangmanWord.
 		hangmanWord = words[Math.floor(Math.random() * words.length)];
@@ -40,10 +43,10 @@
 			blankWord.push("_");
 		}
 
-		document.getElementById("wins").innerHTML = "<h2> " + wins + "</h2>";
-		document.getElementById("currentWord").innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
-		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
-		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
+		score.innerHTML = "<h2> " + wins + "</h2>";
+		currentWord.innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
+		guessesRemaining.innerHTML = "<h2> " + lives + "</h2>";
+		lettersGuessed.innerHTML = "<h2> " + guessedLetters + "</h2>";
 
 	}
 
@@ -53,14 +56,14 @@
 	function restart() {
 
 		// Shows generic image
-		document.getElementById("answerImage").innerHTML = '<img src="assets/images/ironthrone.jpg" width="400px" height="400px">';
+		answerImage.innerHTML = '<img src="assets/images/ironthrone.jpg" width="400px" height="400px">';
 
 		// Resets blanks for word and letters already guessed
 		blankWord = [];
 		guessedLetters = [];
 
 		// Resets remaining guesses counter
-		remainingGuesses = 9;
+		lives = 9;
 
 		// Randomly chooses a word from the words array. This is the hangmanWord.
 		hangmanWord = words[Math.floor(Math.random() * words.length)];
@@ -76,10 +79,10 @@
 			blankWord.push("_");
 		}
 
-		document.getElementById("wins").innerHTML = "<h2> " + wins + "</h2>";
-		document.getElementById("currentWord").innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
-		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
-		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters + "</h2>";
+		score.innerHTML = "<h2> " + wins + "</h2>";
+		currentWord.innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
+		guessesRemaining.innerHTML = "<h2> " + lives + "</h2>";
+		lettersGuessed.innerHTML = "<h2> " + guessedLetters + "</h2>";
 
 	}
 
@@ -111,6 +114,11 @@
 					valid = true;
 				}
 			}
+
+			console.log("<--inside validate function-->");
+			console.log(lives);
+			console.log(guessedLetters);
+			console.log(userGuess);
 		}
 
 		validate();
@@ -130,23 +138,27 @@
 
 				if (userGuess === hangmanWordLetters[i]) {
 					blankWord[i] = userGuess;
-					// Refactor outside of the if or for
-					document.getElementById("currentWord").innerHTML = "<h1> " + blankWord + " </h1>";
-					document.getElementById("currentWord").innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
+					currentWord.innerHTML = "<h1> " + blankWord + " </h1>";
+					currentWord.innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
 				} 
 			}
 		} else if (valid) {
 			guessedLetters.push(userGuess);
-			remainingGuesses--;
-			document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
+			lives--;
+			guessesRemaining.innerHTML = "<h2> " + lives + "</h2>";
+			lettersGuessed.innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
+			console.log("<--inside onkeyup function-->");
+			console.log(lives);
+			console.log(guessedLetters);
+			console.log(userGuess);
 		} 	
 
 		// Lose
-		if (remainingGuesses < 1) {
-			document.getElementById("answerImage").innerHTML = '<img src="assets/images/hangman.gif" width="400px" height="400px">';
-			document.getElementById("answerText").innerHTML = "<h1> You lose! Click anywhere to play again. </h1>";
+		if (lives < 1) {
+			answerImage.innerHTML = '<img src="assets/images/hangman.gif" width="400px" height="400px">';
+			answerText.innerHTML = "<h1> You lose! Click anywhere to play again. </h1>";
 			document.onclick = function(event) {
-				document.getElementById("answerText").innerHTML = "";
+				answerText.innerHTML = "";
 				restart();
 			}
 		}  
@@ -154,16 +166,18 @@
 		// Win  
 		if (blankWord.join("") === hangmanWord) {
 			wins++;
-			document.getElementById("wins").innerHTML = "<h2> " + wins + "</h2>";
-			document.getElementById("answerImage").innerHTML = '<img src="assets/images/win.gif" width="400px" height="400px">';
-			document.getElementById("answerText").innerHTML = "<h1> You win! Click anywhere to try again. </h1>";
+			score.innerHTML = "<h2> " + wins + "</h2>";
+			answerImage.innerHTML = '<img src="assets/images/win.gif" width="400px" height="400px">';
+			answerText.innerHTML = "<h1> You win! Click anywhere to try again. </h1>";
 			document.onclick = function(event) {
-				document.getElementById("answerText").innerHTML = "";
+				answerText.innerHTML = "";
 				restart();
 			} 
 		}
 
 	}
+		lettersGuessed.innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
 
-		document.getElementById("guessesRemaining").innerHTML = "<h2> " + remainingGuesses + "</h2>";
-		document.getElementById("lettersGuessed").innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
+		console.log("<--outside onkeyup function-->");
+			console.log(lives);
+			console.log(guessedLetters);
