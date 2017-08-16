@@ -156,7 +156,7 @@
 		// Lose
 		if (lives < 1) {
 			answerImage.innerHTML = '<img src="assets/images/hangman.gif" width="400px" height="400px">';
-			answerText.innerHTML = "<h1> You lose! Click anywhere to play again. </h1>";
+			answerText.innerHTML = "<h1> You lose! Click anywhere to try again. </h1>";
 			document.onclick = function(event) {
 				answerText.innerHTML = "";
 				restart();
@@ -166,9 +166,9 @@
 		// Win  
 		if (blankWord.join("") === hangmanWord) {
 			wins++;
-			score.innerHTML = "<h2> " + wins + "</h2>";
+			// score.innerHTML = "<h2> " + wins + "</h2>";
 			answerImage.innerHTML = '<img src="assets/images/win.gif" width="400px" height="400px">';
-			answerText.innerHTML = "<h1> You win! Click anywhere to try again. </h1>";
+			answerText.innerHTML = "<h1> You win! Click anywhere to play again. </h1>";
 			document.onclick = function(event) {
 				answerText.innerHTML = "";
 				restart();
