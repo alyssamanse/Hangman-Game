@@ -7,10 +7,12 @@
 	var lettersGuessed = document.getElementById("lettersGuessed");
 	var answerText = document.getElementById("answerText");
 	var answerImage = document.getElementById("answerImage");
+	var lossCount = document.getElementById("losses");
 	
 	// Global Variables
 	var words = ["Tyrion", "Lannister", "Westeros", "Daenerys", "Khaleesi", "Valyrian", "Volantis", "Hodor", "Direwolf", "Baratheon", "Dothraki", "Wildling", "Brienne", "Nymeria", "Stark", "Catspaw", "Missandei", "Brotherhood", "Baelor", "Rhaegar", "Ghost", "Winterfell", "Oberyn", "Harrenhal"];
 	var wins = 0;
+	var losses = 0;
 	var guessedLetters = [];
 	var lives;
 	var blankWord = [];
@@ -44,6 +46,7 @@
 		}
 
 		score.innerHTML = "<h2> " + wins + "</h2>";
+		lossCount.innerHTML = "<h2> " + losses + "</h2>";
 		currentWord.innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
 		guessesRemaining.innerHTML = "<h2> " + lives + "</h2>";
 		lettersGuessed.innerHTML = "<h2> " + guessedLetters + "</h2>";
@@ -80,6 +83,7 @@
 		}
 
 		score.innerHTML = "<h2> " + wins + "</h2>";
+		lossCount.innerHTML = "<h2> " + losses + "</h2>";
 		currentWord.innerHTML = "<h1> " + blankWord.join(" ") + "</h1>";
 		guessesRemaining.innerHTML = "<h2> " + lives + "</h2>";
 		lettersGuessed.innerHTML = "<h2> " + guessedLetters + "</h2>";
@@ -114,11 +118,6 @@
 					valid = true;
 				}
 			}
-
-			console.log("<--inside validate function-->");
-			console.log(lives);
-			console.log(guessedLetters);
-			console.log(userGuess);
 		}
 
 		validate();
@@ -147,14 +146,11 @@
 			lives--;
 			guessesRemaining.innerHTML = "<h2> " + lives + "</h2>";
 			lettersGuessed.innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
-			console.log("<--inside onkeyup function-->");
-			console.log(lives);
-			console.log(guessedLetters);
-			console.log(userGuess);
 		} 	
 
 		// Lose
 		if (lives < 1) {
+			losses++;
 			answerImage.innerHTML = '<img src="assets/images/hangman.gif" width="400px" height="400px">';
 			answerText.innerHTML = "<h1> You lose! Click anywhere to try again. </h1>";
 			document.onclick = function(event) {
@@ -166,7 +162,6 @@
 		// Win  
 		if (blankWord.join("") === hangmanWord) {
 			wins++;
-			// score.innerHTML = "<h2> " + wins + "</h2>";
 			answerImage.innerHTML = '<img src="assets/images/win.gif" width="400px" height="400px">';
 			answerText.innerHTML = "<h1> You win! Click anywhere to play again. </h1>";
 			document.onclick = function(event) {
@@ -177,7 +172,3 @@
 
 	}
 		lettersGuessed.innerHTML = "<h2> " + guessedLetters.join(" ") + "</h2>";
-
-		console.log("<--outside onkeyup function-->");
-			console.log(lives);
-			console.log(guessedLetters);
