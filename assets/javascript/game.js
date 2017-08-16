@@ -101,7 +101,7 @@
 
 			var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-			for (i = 0; i < guessedLetters.length; i++) {
+			for (var i = 0; i < guessedLetters.length; i++) {
 
 				if (userGuess === guessedLetters[i] || userGuess === blankWord[i]) {
 					alert("You've already tried " + userGuess + ". Try again!");
@@ -109,7 +109,7 @@
 				} 
 			}
 
-			for (j = 0; j < alphabet.length; j++) {
+			for (var j = 0; j < alphabet.length; j++) {
 				if (userGuess === alphabet[j]) {
 					valid = true;
 				}
